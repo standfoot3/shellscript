@@ -1,0 +1,6 @@
+
+ARGUMENT_OK="OK:Argument"
+ARGUMENT_ERROR="!!!NG!!! Number of Argument must be 0 or 1."
+RENAME_DIALOG="Rename this File ? (Y/N) : "
+CREATE_DIALOG="Create New File ? (Y/N) : "
+YESNO_DIALOG="Enter y, Y, n, or N : "
