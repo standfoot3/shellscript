@@ -21,21 +21,6 @@ DATETIME="`date +"%y%m%d-%H%M%S"`"
 #新規作成ファイル名
 CREATE_FILE="index_${DATETIME}.html"
 
-#YesNo関数
-function func_yes_no(){
-	if [ $# = 1 ]; then
-		case $1 in
-			[nN]) echo "Script END."; exit 5 ;;
-			[yY]) echo "OK" ;;
-			*) read -p "${YESNO_DIALOG}" YN
-			func_yes_no ${YN}
-		esac
-	else
-		read -p ${YESNO_DIALOG} YN
-		func_yes_no ${YN}
-	fi
-}
-
 #変数定義チェック結果表示
 echo "#####Variable Check START#####"
 echo "TARGET_FILE=${TARGET_FILE}"
@@ -45,15 +30,16 @@ echo "######Variable Check END######"
 echo
 
 #対象ファイルの存在チェック
-if [ -e $FILE ]; then
+if [ -e ${TARGET_FILE} ]; then
 	echo ${EXIST} 
 	read -p "${RENAME_DIALOG}" YN
 	func_yes_no ${YN}
-	mv ${FILE} ${CREATE_FILE}
+	mv ${TARGET_FILE} ${CREATE_FILE}
 else
 	echo ${NOT_EXIST}
 	read -p "${CREATE_DIALOG}" YN
 	func_yes_no ${YN}
+	CREATE_FILE=${TARGET_FILE}
 	touch ${CREATE_FILE}
 fi
 echo `ls -ltr ${CREATE_FILE}` 

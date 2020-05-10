@@ -3,3 +3,19 @@ ARGUMENT_ERROR="!!!NG!!! Number of Argument must be 0 or 1."
 RENAME_DIALOG="Rename this File ? (Y/N) : "
 CREATE_DIALOG="Create New File ? (Y/N) : "
 YESNO_DIALOG="Enter y, Y, n, or N : "
+
+
+#YesNo関数
+function func_yes_no(){
+	if [ $# = 1 ]; then
+		case $1 in
+			[nN]) echo "Script END."; exit 5 ;;
+			[yY]) echo "OK" ;;
+			*) read -p "${YESNO_DIALOG}" YN
+			func_yes_no ${YN}
+		esac
+	else
+		read -p ${YESNO_DIALOG} YN
+		func_yes_no ${YN}
+	fi
+}
