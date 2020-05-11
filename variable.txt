@@ -1,8 +1,13 @@
 ARGUMENT_OK="OK:Argument"
+
 ARGUMENT_ERROR="!!!NG!!! Number of Argument must be 0 or 1."
 RENAME_DIALOG="Rename this File ? (Y/N) : "
 CREATE_DIALOG="Create New File ? (Y/N) : "
 YESNO_DIALOG="Enter y, Y, n, or N : "
+OK_DIALOG="OK ? (Y/N) : "
+ASK_OPERATION="What do you wanna do ? (a:add / r:remove) : "
+ADD_START="START ADD to GitHub repository."
+REMOVE_START="START REMOVE from GitHub repository."
 
 
 #YesNo関数
@@ -19,3 +24,36 @@ function func_yes_no(){
 		func_yes_no ${YN}
 	fi
 }
+
+#ADDorREMOVE関数
+function func_add_remove(){
+	if [ $# -eq 1 ]; then
+		case $1 in
+			a) echo ${ADD_START} ;;
+			r) echo ${REMOVE_START} ;;
+			*) read -p "${ASK_OPERATION}" OPE;
+			func_add_remove ${OPE}
+		esac
+	else
+		read -p "${ASK_OPERATION}" OPE
+		func_add_remove ${OPE}
+	fi
+}
+
+#コマンドを実行
+function func_command(){
+	echo "${1}"
+	echo `${1}`
+}
+
+#コマンドを実行して、結果が大丈夫か確認
+function func_command_ok(){
+	func_command "${1}"
+	read -p "${OK_DIALOG}" YN
+	func_yes_no ${YN}
+}
+
+
+
+
+
