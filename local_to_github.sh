@@ -12,13 +12,12 @@ CHECK_STATUS="git status --short"
 #関数
 function func_ope_loop(){
 	if [ $# -eq 1 ]; then
-		func_command "ls -ltr"
+		ls -ltr | tail -n +2
 		read -p "Which is a targeted item ? (if nothing:END) : " TI
-		if [ ${TI} = "END" ]; then
+		if [ ${TI} = END ]; then
 			:
 		else	
-			ls -ltr ${TI}
-			if [ $? -ne 0 ]; then
+			if [ -e "o" ]; then
 				echo ${TI}" doesn't exist in the current directory."
 				func_ope_loop {OPE}
 			else
