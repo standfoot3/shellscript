@@ -42,8 +42,8 @@ function func_add_remove(){
 
 #コマンドを実行
 function func_command(){
-	echo "${1}"
-	echo `${1}`
+	echo $1
+	$1
 }
 
 #コマンドを実行して、結果が大丈夫か確認

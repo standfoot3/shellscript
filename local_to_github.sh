@@ -5,27 +5,30 @@
 . ./variable.txt
 
 #Git/GitHub用コマンド
-ADD_ALL="pwd"    #"git add --all"
-REMOVE_ALL="pwd" #"git rm -a"
+ADD_ALL="git add --all"
+REMOVE_ALL="git rm -a"
 CHECK_STATUS="git status --short"
+COMMIT="git commit -m "
+ADD_TO_GITHUB="git push shellscript branch1.0"
 
 #関数
 function func_ope_loop(){
 	if [ $# -eq 1 ]; then
 		ls -ltr | tail -n +2
-		read -p "Which is a targeted item ? (if nothing:END) : " TI
-		if [ ${TI} = END ]; then
+		read -p "Which is a targeted item ? (if nothing : q) : " TI
+		if [ ${TI} = q ]; then
 			:
 		else	
-			if [ -e "o" ]; then
+			if [ ! -e ${TI} ]; then
 				echo ${TI}" doesn't exist in the current directory."
 				func_ope_loop {OPE}
 			else
 				echo ${TI}" is "${OPE}"ed"
 				func_ope_loop {OPE}
 			fi
-			func_command ${CHECK_STATUS}
 		fi
+		echo ${CHECK_STATUS}
+		${CHECK_STATUS}
 	fi
 }
 #何をしたいか聞く
@@ -42,8 +45,25 @@ fi
 #追加or削除スタート
 read -p "Do you "${OPE}" all materials ? or select materials ? (a:all / s:select) : " AS
 if [ ${AS} = a ]; then
-	func_command_ok ${ADD_ALL}
-	
+	echo ${ADD_ALL}
+	${ADD_ALL}
+	read -p "${OK_DIALOG}" YN
+	func_yes_no ${YN}
 else
 	func_ope_loop ${OPE} 
 fi
+
+#GitへのCommit
+read -p "Enter Comment for Commit : " CC
+echo ${COMMIT}${CC}
+${COMMIT}${CC}
+
+#Githubへadd/remove
+if [ ${OPE} = "add" ]; then
+	echo ${ADD_TO_GITHUB}
+	${ADD_TO_GITHUB}
+else
+	ecoh ${REMOVE_FROM_GITHUB}
+	${REMOVE_FROM_GITHUB}
+fi 
+
