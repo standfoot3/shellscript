@@ -57,12 +57,7 @@ fi
 read -p "Enter Comment for Commit : " CC
 echo ${COMMIT}${CC}
 ${COMMIT}${CC}
-if [ $? -eq 0 ]; then
-	echo "*******Commit Success******"
-else
-	echo "Some Errors. Abnormally End."
-	exit 8
-fi
+func_return_code ${?} "Commit"
 
 #Githubへadd/remove
 if [ ${OPE} = "add" ]; then
@@ -73,3 +68,5 @@ else
 	${REMOVE_FROM_GITHUB}
 fi 
 
+#Success
+exit 0
