@@ -57,11 +57,12 @@ function func_command_ok(){
 #リターンコーチェック関数
 function func_return_code(){
 	if [ ${1} -eq 0 ]; then
-		echo "******"${2}" Success******"
+		echo "**********"${2}" Success**********"
 	else
-		echo "Some Errors. Abnormally End."
+		echo "!!!!!!!!!!Abnormally End!!!!!!!!!!"
 		exit 8
 	fi
+	echo
 }
 
 
