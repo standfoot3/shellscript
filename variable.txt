@@ -6,8 +6,8 @@ CREATE_DIALOG="●Create New File ? (Y/N) : "
 YESNO_DIALOG="●Enter y, Y, n, or N : "
 OK_DIALOG="●OK ? (Y/N) : "
 ASK_OPERATION="●What do you wanna do ? (a:add / r:remove) : "
-ADD_START="START ADD to GitHub repository."
-REMOVE_START="START REMOVE from GitHub repository."
+ADD_START="★★★★★★START ADD to GitHub repository.★★★★★"
+REMOVE_START="★★★★★START REMOVE from GitHub repository.★★★★★"
 
 
 #YesNo関数

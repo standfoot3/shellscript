@@ -43,7 +43,7 @@ else
 fi
 
 #追加or削除スタート
-read -p "Do you "${OPE}" all materials ? or select materials ? (a:all / s:select) : " AS
+read -p "●Do you "${OPE}" all materials ? or select materials ? (a:all / s:select) : " AS
 if [ ${AS} = a ]; then
 	echo ${ADD_ALL}
 	${ADD_ALL}
