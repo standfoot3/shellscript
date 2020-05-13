@@ -15,7 +15,7 @@ ADD_TO_GITHUB="git push shellscript branch1.0"
 function func_ope_loop(){
 	if [ $# -eq 1 ]; then
 		ls -ltr | tail -n +2
-		read -p "Which is a targeted item ? (if nothing : q) : " TI
+		read -p "●Which is a targeted item ? (if nothing : q) : " TI
 		if [ ${TI} = q ]; then
 			:
 		else	
@@ -54,7 +54,7 @@ else
 fi
 
 #GitへのCommit
-read -p "Enter Comment for Commit : " CC
+read -p "●Enter Comment for Commit : " CC
 echo ${COMMIT}${CC}
 echo "**********Commit Start**********"
 ${COMMIT}${CC}
