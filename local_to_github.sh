@@ -61,6 +61,7 @@ ${COMMIT}${CC}
 func_return_code ${?} "Commit"
 
 #Githubへadd/remove
+echo "**********PushToGitHub Start**********"
 if [ ${OPE} = "add" ]; then
 	echo ${ADD_TO_GITHUB}
 	${ADD_TO_GITHUB}
@@ -68,6 +69,8 @@ else
 	ecoh ${REMOVE_FROM_GITHUB}
 	${REMOVE_FROM_GITHUB}
 fi 
+func_return_code ${?} "PushToGitHub"
+
 
 #Success
 exit 0
