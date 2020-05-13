@@ -55,9 +55,9 @@ fi
 
 #GitへのCommit
 read -p "●Enter Comment for Commit : " CC
-echo ${COMMIT}${CC}
 echo "**********Commit Start**********"
 ${COMMIT}${CC}
+echo ${COMMIT}${CC}
 func_return_code ${?} "Commit"
 
 #Githubへadd/remove
