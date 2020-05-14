@@ -11,7 +11,9 @@ SQL_FILE="execute.sql"
 if [ ! -e ${OUTPUT_FILE} ]; then
 	:
 else 
-	rm -i ${OUTPUT_FILE}
+	read -p ${OUTPUT_FILE}"を削除して良いですか？ : " YN
+	func_yes_no ${YN}
+	rm ${OUTPUT_FILE}
 fi
 echo
 
@@ -39,7 +41,9 @@ echo
 if [ ! -e ${SQL_FILE} ]; then
 	:
 else
-	rm -i ${SQL_FILE}
+	read -p ${SQL_FILE}"を削除して良いですか？ : " YN
+	func_yes_no ${YN}
+	rm ${SQL_FILE}
 fi
 echo
 
