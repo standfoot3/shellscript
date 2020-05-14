@@ -1,3 +1,6 @@
+SELECT *
+FROM ATRDSADM.TBL_MSG
+WHERE MSG_ID IN (
 'M001',
 'M002',
 'M003',
@@ -7,4 +10,5 @@
 'M007',
 'M008',
 'M009',
-'M010',
+'M010'
+)
